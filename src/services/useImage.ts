@@ -1,21 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-export const useImage = (stationCode: string) => {
-    const [image, setImage] = useState<string | null>(null);
+export const useImage = (pokemon: string) => {
+  const [image, setImage] = useState<string | undefined>(undefined);
 
-    useEffect(() => {
-        const fetchImage = async () => {
-            try {
-                const response = await import(`../assets/stations/${stationCode}.jpg`);
-                setImage(response.default);
-            } catch (err) {
-                const response = await import(`../assets/default.png`);
-                setImage(response.default);
-            }
-        };
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const response = await import(`../assets/images/${pokemon}.png`);
+        setImage(response.default);
+      } catch (err) {
+        console.warn(err);
+      }
+    };
 
-        fetchImage();
-    }, [stationCode]);
+    fetchImage();
+  }, [pokemon]);
 
-    return image;
+  return image;
 };

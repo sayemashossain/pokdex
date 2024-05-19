@@ -1,10 +1,21 @@
-import * as d3 from "d3"
-import csvFile from "../../assets/pokemon.csv"
+import { useImage } from "../../services/useImage";
 
-export const PokedexGridItem = () => {
-    const data = d3.csv(csvFile).then((x)=>  x);
+export const PokedexGridItem = ({ name, hp }: { name: string; hp: string }) => {
+  const image = useImage(name.toLowerCase());
 
-    return [1,2,3,4,5,6].map((hjj)=> <div>
-         {hjj}
-     </div>)
- }
+  return (
+    <div
+      style={{
+        width: "200px",
+        height: "200px",
+        borderRadius: "50px",
+        backgroundColor: "grey",
+      }}
+    >
+      <img src={image} />
+      <div>
+        {name} {hp}
+      </div>
+    </div>
+  );
+};
