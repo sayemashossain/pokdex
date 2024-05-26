@@ -21,8 +21,13 @@ export const Pokedex: React.FC = () => {
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
       {fetchedCSVData
-        ? fetchedCSVData.map(({ name, hp }) => (
-            <PokedexGridItem name={name} hp={hp} />
+        ? fetchedCSVData.map(({ name, hp, pokedex_number }) => (
+            <PokedexGridItem
+              key={pokedex_number}
+              name={name}
+              hp={hp}
+              pokedexNumber={pokedex_number}
+            />
           ))
         : null}
     </div>
