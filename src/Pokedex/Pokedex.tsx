@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { DSVRowArray } from "d3";
 import * as d3 from "d3";
 import csvFile from "../assets/pokemon.csv?url";
-import { PokedexGridItem } from "./PokedexGridItem/PokedexGridItem";
+import { PokedexGrid } from "./PokedexGrid/PokedexGrid";
 
 export const Pokedex: React.FC = () => {
   const [fetchedCSVData, setFetchedCSVdata] = useState<DSVRowArray | null>(
@@ -18,18 +18,5 @@ export const Pokedex: React.FC = () => {
       });
   }
 
-  return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
-      {fetchedCSVData
-        ? fetchedCSVData.map(({ name, hp, pokedex_number }) => (
-            <PokedexGridItem
-              key={pokedex_number}
-              name={name}
-              hp={hp}
-              pokedexNumber={pokedex_number}
-            />
-          ))
-        : null}
-    </div>
-  );
+  return fetchedCSVData ? <PokedexGrid pokemonData={fetchedCSVData} /> : null;
 };
