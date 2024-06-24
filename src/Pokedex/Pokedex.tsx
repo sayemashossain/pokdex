@@ -10,11 +10,11 @@ export const Pokedex: React.FC = () => {
     null,
   );
 
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleClick = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   if (!fetchedCSVData) {
     fetch(csvFile)

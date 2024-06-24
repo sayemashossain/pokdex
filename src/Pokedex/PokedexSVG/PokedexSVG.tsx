@@ -9,6 +9,17 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
   const { pokemonData, isOpen } = props;
   console.log(pokemonData[0]);
 
+  const pokedexBase = "#ee2222";
+  const pokedexHinge = "#8a302c";
+  const pokedexOutline = "#442222";
+  const pokedexBlueLight = "#51e4f5";
+
+  const pokedexGreenLight = "green";
+  const pokedexYellowLight = "yellow";
+  const pokedexRedLight = "red";
+
+  const pokedexScreen = "limegreen"
+
   return (
     <svg
       viewBox="0 0 610 410"
@@ -22,8 +33,8 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
       }}
     >
       <path
-        fill="#ee2222"
-        stroke="#442222"
+        fill={pokedexBase}
+        stroke={pokedexOutline}
         stroke-width="10"
         d="
             M 5,105
@@ -39,8 +50,8 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
         "
       />
       <path
-        fill="#ee2222"
-        stroke="#442222"
+        fill={pokedexBase}
+        stroke={pokedexOutline}
         stroke-width="10"
         d="
             M 5,105
@@ -57,8 +68,8 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
 
       {isOpen ? (
         <path
-          fill="#ee2222"
-          stroke="#442222"
+          fill={pokedexBase}
+          stroke={pokedexOutline}
           stroke-width="10"
           d="
             M 570,105
@@ -75,8 +86,8 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
       ) : null}
       <g id="hinges">
         <path
-          fill="#ee2222"
-          stroke="#442222"
+          fill={pokedexBase}
+          stroke={pokedexOutline}
           stroke-width="10"
           d="
             M 270,65
@@ -88,8 +99,8 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
           "
         />
         <path
-          fill="#8a302c"
-          stroke="#442222"
+          fill={pokedexHinge}
+          stroke={pokedexOutline}
           stroke-width="10"
           d="
             M 270,65
@@ -101,8 +112,8 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
           "
         />
         <path
-          fill="#8a302c"
-          stroke="#442222"
+          fill={pokedexHinge}
+          stroke={pokedexOutline}
           stroke-width="10"
           d="
             M 270,340
@@ -114,8 +125,8 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
           "
         />
         <path
-          fill="#ee2222"
-          stroke="#442222"
+          fill={pokedexBase}
+          stroke={pokedexOutline}
           stroke-width="10"
           d="
             M 270,100
@@ -127,8 +138,8 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
           "
         />
         <path
-          fill="#ee2222"
-          stroke="#442222"
+          fill={pokedexBase}
+          stroke={pokedexOutline}
           stroke-width="10"
           d="
            M 270,320
@@ -146,22 +157,22 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
           cx="55"
           cy="55"
           r="23"
-          fill="#51e4f5"
-          stroke="#442222"
+          fill={pokedexBlueLight}
+          stroke={pokedexOutline}
           stroke-width="4"
         />
-        <g stroke="#442222" stroke-width="4" id="small-buttons">
-          <circle cx="225" cy="35" r="8" fill="red" />
-          <circle cx="250" cy="35" r="8" fill="yellow" />
-          <circle cx="275" cy="35" r="8" fill="green" />
+        <g stroke={pokedexOutline} stroke-width="4" id="small-buttons">
+          <circle cx="225" cy="35" r="8" fill={pokedexRedLight} />
+          <circle cx="250" cy="35" r="8" fill={pokedexYellowLight} />
+          <circle cx="275" cy="35" r="8" fill={pokedexGreenLight} />
         </g>
       </g>
 
       {!isOpen ? (
         <>
           <path
-            fill="#442222"
-            stroke="#442222"
+            fill={pokedexOutline}
+            stroke={pokedexOutline}
             stroke-width="10"
             stroke-linejoin="round"
             stroke-linecap="round"
@@ -173,8 +184,8 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
           "
           />
           <path
-            fill="yellow"
-            stroke="#442222"
+            fill={pokedexYellowLight}
+            stroke={pokedexOutline}
             stroke-width="4"
             d="
             M 60,230 
@@ -188,8 +199,8 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
 
       {!isOpen ? (
         <path
-          fill="#8a302c"
-          stroke="#442222"
+          fill={pokedexHinge}
+          stroke={pokedexOutline}
           stroke-width="4"
           d="
             M 80,340
@@ -208,8 +219,8 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
           width="200"
           height="200"
           rx="5"
-          fill="#51e4f5"
-          stroke="#442222"
+          fill={pokedexScreen}
+          stroke={pokedexOutline}
           stroke-width="4"
         />
       ) : null}
