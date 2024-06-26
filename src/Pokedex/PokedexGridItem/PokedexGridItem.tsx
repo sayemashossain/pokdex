@@ -1,14 +1,47 @@
-import { useImage } from "../../services/useImage";
+import { usePokemonImage } from "../../services/usePokemonImage";
+import { TypeThumbnail } from "../TypeThumbnail/TypeThumbnail";
 
-export const PokedexGridItem = ({
-  name,
-  // hp,
-  pokedexNumber,
-}: {
+export type Types =
+  | "bug"
+  | "dark"
+  | "dragon"
+  | "electric"
+  | "fairy"
+  | "fight"
+  | "fire"
+  | "flying"
+  | "ghost"
+  | "grass"
+  | "ground"
+  | "ice"
+  | "normal"
+  | "poison"
+  | "psychic"
+  | "rock"
+  | "steel"
+  | "water";
+
+export type PokemonInfoType = {
+  attack: number;
+  defense: number;
+  hp: number;
   name: string;
-  hp: string;
-  pokedexNumber: string;
-}) => {
+  percentage_male: number;
+  pokedex_number: number;
+  speed: number;
+  type1: Types;
+  type2: Types;
+};
+
+export type PokemonGridItemProps = {
+  pokemonInfo: PokemonInfoType;
+};
+
+export const PokedexGridItem: React.FC<PokemonGridItemProps> = ({
+  pokemonInfo,
+}: PokemonGridItemProps) => {
+  const { name, hp, type1, type2, attack, defense } = pokemonInfo;
+
   const imageName = name
     .toLowerCase()
     .replace(/\s+/g, "-")
@@ -19,26 +52,73 @@ export const PokedexGridItem = ({
     .replace(/♀+/g, "-f")
     .replace(/♂+/g, "-m");
 
-  const image = useImage(imageName);
+  const image = usePokemonImage(imageName);
 
   return (
     <div
       style={{
-        width: "150px",
-        height: "150px",
-        borderRadius: "10px",
-        border: "1px solid grey",
+        position: "absolute",
+        left: 60,
+        top: 140,
+        zIndex: 5,
+        width: "155px",
+        height: "85px",
+        borderRadius: "2px",
+        border: "1px solid #442222",
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-around",
-        alignContent: "center",
+        flexDirection: "row",
+        justifyContent: "start",
+        alignItems: "center",
+        backgroundColor: "#222222",
       }}
     >
-      <div>
-        #{pokedexNumber} {name}
-      </div>
-      <div>
-        <img src={image} />
+      <div
+        style={{
+          width: "60px",
+          height: "60px",
+          backgroundImage: `url(${image})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      />
+      <div
+        style={{
+          width: "95px",
+          fontFamily: "courier",
+          fontSize: "8px",
+          color: "#eeeeee",
+          textAlign: "start",
+          display: "flex",
+          flexDirection: "column",
+          padding: "8px",
+          gap: "1px",
+        }}
+      >
+        <div style={{ display: "flex", marginBottom: "4px" }}>{name}</div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>HP:</div>
+          <div>{hp}</div>
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>Attack:</div>
+          <div>{attack}</div>
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>Defense:</div>
+          <div>{defense}</div>
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>Type:</div>
+          <div style={{ display: "flex", gap: "2px" }}>
+            <div>
+              <TypeThumbnail typeName={type1} />
+            </div>
+            <div>/</div>
+            <div>
+              <TypeThumbnail typeName={type2} />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

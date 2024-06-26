@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useImage = (pokemon: string) => {
+export const usePokemonImage = (pokemon: string) => {
   const [image, setImage] = useState<string | undefined>(undefined);
 
   useEffect(() => {
