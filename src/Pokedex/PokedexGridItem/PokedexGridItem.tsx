@@ -1,5 +1,4 @@
 import { usePokemonImage } from "../../services/usePokemonImage";
-import { TypeThumbnail } from "../TypeThumbnail/TypeThumbnail";
 
 export type Types =
   | "bug"
@@ -24,6 +23,7 @@ export type Types =
 export type PokemonInfoType = {
   attack: number;
   defense: number;
+  abilities: string;
   hp: number;
   name: string;
   percentage_male: number;
@@ -40,7 +40,7 @@ export type PokemonGridItemProps = {
 export const PokedexGridItem: React.FC<PokemonGridItemProps> = ({
   pokemonInfo,
 }: PokemonGridItemProps) => {
-  const { name, hp, type1, type2, attack, defense } = pokemonInfo;
+  const { name } = pokemonInfo;
 
   const imageName = name
     .toLowerCase()
@@ -74,52 +74,14 @@ export const PokedexGridItem: React.FC<PokemonGridItemProps> = ({
     >
       <div
         style={{
-          width: "60px",
-          height: "60px",
+          width: "100%",
+          height: "100%",
           backgroundImage: `url(${image})`,
           backgroundPosition: "center",
-          backgroundSize: "cover",
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
         }}
       />
-      <div
-        style={{
-          width: "95px",
-          fontFamily: "courier",
-          fontSize: "8px",
-          color: "#eeeeee",
-          textAlign: "start",
-          display: "flex",
-          flexDirection: "column",
-          padding: "8px",
-          gap: "1px",
-        }}
-      >
-        <div style={{ display: "flex", marginBottom: "4px" }}>{name}</div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div>HP:</div>
-          <div>{hp}</div>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div>Attack:</div>
-          <div>{attack}</div>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div>Defense:</div>
-          <div>{defense}</div>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div>Type:</div>
-          <div style={{ display: "flex", gap: "2px" }}>
-            <div>
-              <TypeThumbnail typeName={type1} />
-            </div>
-            <div>/</div>
-            <div>
-              <TypeThumbnail typeName={type2} />
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

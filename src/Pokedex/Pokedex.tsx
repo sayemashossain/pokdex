@@ -9,6 +9,7 @@ import {
   Types,
 } from "./PokedexGridItem/PokedexGridItem";
 import { PokedexSVG } from "./PokedexSVG/PokedexSVG";
+import { PokemonData } from "./PokedexGridItem/PokemonData";
 
 export const Pokedex: React.FC = () => {
   const [fetchedCSVData, setFetchedCSVdata] = useState<DSVRowArray | null>(
@@ -42,6 +43,7 @@ export const Pokedex: React.FC = () => {
     speed,
     type1,
     type2,
+    abilities,
   } = fetchedCSVData[0];
 
   const pokemonInfo: PokemonInfoType = {
@@ -54,6 +56,7 @@ export const Pokedex: React.FC = () => {
     speed: parseInt(speed),
     type1: type1 as Types,
     type2: type2 as Types,
+    abilities: abilities,
   };
 
   return (
@@ -66,8 +69,13 @@ export const Pokedex: React.FC = () => {
       }}
       onClick={handleClick}
     >
-      {isOpen ? <PokedexGridItem pokemonInfo={pokemonInfo} /> : null}
       <PokedexSVG pokemonData={fetchedCSVData} isOpen={isOpen} />
+      {isOpen ? (
+        <>
+          <PokedexGridItem pokemonInfo={pokemonInfo} />
+          <PokemonData pokemonInfo={pokemonInfo} />
+        </>
+      ) : null}
     </div>
   );
 };

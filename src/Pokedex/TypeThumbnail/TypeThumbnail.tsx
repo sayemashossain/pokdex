@@ -54,8 +54,8 @@ export const TypeThumbnail: React.FC<TypeThumbnailProps> = ({
     <div
       style={{
         display: "inline-block",
-        width: "10px",
-        height: "10px",
+        width: "20px",
+        height: "20px",
         borderRadius: "100%",
         backgroundColor: `${typeColors[typeName]}`,
         backgroundImage: `url(${image})`,
