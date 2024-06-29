@@ -161,16 +161,7 @@ export const PokedexSVG: React.FC<PokedexGridProps> = (
       {/* OPEN STATE */}
       {/* SCREEN */}
       {isOpen ? (
-        // <rect
-        //   x="30"
-        //   y="115"
-        //   width="220"
-        //   height="150"
-        //   rx="5"
-        //   fill={pokedexScreen}
-        //   stroke={pokedexOutline}
-        //   stroke-width="4"
-        // />
+       
 
         <path
           fill={pokedexScreen}
