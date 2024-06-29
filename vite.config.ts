@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => {
     define: {
       "process.env.PUBLIC_URL": JSON.stringify(env.PUBLIC_URL),
     },
+    base: "/pokedex/",
     plugins: [react()],
   };
 });
