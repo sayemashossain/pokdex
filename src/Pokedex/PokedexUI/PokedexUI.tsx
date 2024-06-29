@@ -1,13 +1,6 @@
-import { DSVRowArray } from "d3";
 import React from "react";
 
-type PokedexGridProps = { pokemonData: DSVRowArray<string> };
-
-export const PokedexUI: React.FC<PokedexGridProps> = (
-  props: PokedexGridProps,
-) => {
-  const { pokemonData } = props;
-
+export const PokedexUI: React.FC = () => {
   return (
     <div
       style={{
